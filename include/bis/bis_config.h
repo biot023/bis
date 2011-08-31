@@ -20,6 +20,14 @@ namespace bis {
     };
     typedef map<attr, uint> attrs;
 
+    /**
+     * There are a number of config parameters that have to come from the actor
+     * that requires the instruction set and exec (the Biot):
+     *   - Count of possible actions
+     *   - Number of senses to go in the sensory array
+     *   - The maximum indices for each sense in the sensory array
+     */
+
     BisConfig();
     BisConfig( const attrs &_attrs );
     ~BisConfig() {}
