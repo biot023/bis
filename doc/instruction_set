@@ -1,0 +1,59 @@
+INSTRUCTIONS:
+
+  Action Instructions:
+    00 -- PushAction( action )
+    01 -- PopAction
+    02 -- ClearActions
+
+  Parameter Instructions:
+    03 -- PushParameter( parameter )
+    04 -- PopParameter
+    05 -- ClearParameters
+
+  Memory Index Instructions:
+    06 -- SetMemoryIndex( index )
+    07 -- OffsetMemoryIndex( index )
+
+  Memory Write Instructions:
+    08 -- WriteConst( value )
+    09 -- WriteConstAtIndex( value, index )
+    10 -- WriteConstAtOffset( value, offset )
+
+  Memory Write Sense Instructions:
+    11 -- WriteSense( senses_index, sense_index )
+    12 -- WriteSenseAtIndex( senses_index, sense_index, index )
+    13 -- WriteSenseAtOffset( senses_index, sense_index, offset )
+
+  Memory Increment Instructions:
+    14 -- Increment( amount )
+    15 -- IncrementAtIndex( amount, index )
+    16 -- IncrementAtOffset( amount, offset )
+
+  Control Instructions:
+    17 -- If( Operator, true_instructions, false_instructions )
+    18 -- While( Operator, instructions )
+    19 -- End( end_function_ratio_match )
+
+
+
+OPERATORS:
+
+  Constant Operators:
+    00 -- MemEqConst( value )
+    01 -- MemLtConst( value )
+    02 -- MemGtConst( value )
+
+  Memory Index Operators:
+    03 -- MemEqIndex( value, index )
+    04 -- MemLtIndex( value, index )
+    05 -- MemGtIndex( value, index )
+
+  Memory Offset Operators:
+    06 -- MemEqOffset( value, offset )
+    07 -- MemLtOffset( value, offset )
+    08 -- MemGtOffset( value, offset )
+
+  Complex Operators:
+    09 -- And( Operator, Operator )
+    10 -- Or( Operator, Operator )
+    11 -- Not( Operator )
