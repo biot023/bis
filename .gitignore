@@ -1,6 +1,4 @@
-**/*.o
-**/*.d
-lib/*.a
+*.[oad]
 features/feature_runner
 test/test_runner
 tmp/*
