@@ -12,12 +12,12 @@ namespace bis {
     _set_defaults();
     for ( const auto &kv : _attrs ) {
       switch( kv.first ) {
-        case ActionStackSize : _action_stack_size = kv.second; break;
-        case MemorySize : _memory_size = kv.second; break;
-        case ParameterStackSize : _parameter_stack_size = kv.second; break;
-        case MaxFunctionOffset : _max_function_offset = kv.second; break;
-        case EndFunctionRatioA : _end_function_ratio_a = kv.second; break;
-        case EndFunctionRatioB : _end_function_ratio_b = kv.second; break;
+        case attr::ActionStackSize : _action_stack_size = kv.second; break;
+        case attr::MemorySize : _memory_size = kv.second; break;
+        case attr::ParameterStackSize : _parameter_stack_size = kv.second; break;
+        case attr::MaxFunctionOffset : _max_function_offset = kv.second; break;
+        case attr::EndFunctionRatioA : _end_function_ratio_a = kv.second; break;
+        case attr::EndFunctionRatioB : _end_function_ratio_b = kv.second; break;
       } // esac
     } // next kv
   }

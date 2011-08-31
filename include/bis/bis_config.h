@@ -10,7 +10,7 @@ namespace bis {
 
   class BisConfig {
   public:
-    enum attr_t : uint {
+    enum class attr : uint {
         ActionStackSize,    // The size of the stack of actions
         MemorySize,         // The size of the memory array
         ParameterStackSize, // The size of the stack of parameters
@@ -18,7 +18,7 @@ namespace bis {
         EndFunctionRatioA,  // Used to build a ratio that defines whether an end function
         EndFunctionRatioB   //   is discarded or actually ends a sequence of instructions
     };
-    typedef map<attr_t, uint> attrs;
+    typedef map<attr, uint> attrs;
 
     BisConfig();
     BisConfig( const attrs &_attrs );
