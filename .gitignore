@@ -1,6 +1,6 @@
 **/*.o
 **/*.d
-**/*.a
+lib/*.a
 features/feature_runner
 test/test_runner
 tmp/*
