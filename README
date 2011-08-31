@@ -1,0 +1,15 @@
+Biot Instruction Set.
+
+To test:
+  $ rake
+  $ rake test
+
+To run individual test file:
+  $ rake SOLO=<test-file>
+  $ rake test SOLO=<test-file>
+
+To run cukes
+  $ rake cuke
+
+To run a given profile
+  $ rake cuke PROFILE=<profile-name>

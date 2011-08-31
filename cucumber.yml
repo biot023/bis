@@ -1,0 +1,3 @@
+default: --format pretty features --color
+current: --format pretty features --color --tags @current
+this: --format pretty features --color --tags @this

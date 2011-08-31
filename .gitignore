@@ -1,0 +1,7 @@
+**/*.o
+**/*.d
+**/*.a
+features/feature_runner
+test/test_runner
+tmp/*
+Gemfile.lock
