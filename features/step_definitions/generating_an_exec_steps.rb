@@ -28,5 +28,5 @@ Given /^I have the following bis config attributes object:$/ do |table|
 end
 
 Given /^I generate a bis exec with the biot and config attributes$/ do
-  pending # express the regexp above with the code you wish you had
+  run_runner( { "output_dir" => @output_dir }.merge( @run_attrs ) )
 end
