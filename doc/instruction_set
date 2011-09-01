@@ -30,9 +30,10 @@ INSTRUCTIONS:
     16 -- IncrementAtOffset( amount, offset )
 
   Control Instructions:
-    17 -- If( Operator, true_instructions, false_instructions )
-    18 -- While( Operator, instructions )
-    19 -- End( end_function_ratio_match )
+    17 -- Call( function_offset[1..MaxFunctionOffset] )
+    18 -- If( Operator, true_instructions, false_instructions )
+    19 -- While( Operator, instructions )
+    20 -- End( end_function_ratio_match )
 
 
 
