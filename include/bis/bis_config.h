@@ -38,6 +38,19 @@ namespace bis {
     const uint max_function_offset()  const { return _max_function_offset; }
     const uint end_function_ratio_a() const { return _end_function_ratio_a; }
     const uint end_function_ratio_b() const { return _end_function_ratio_b; }
+
+    void set_action_stack_size( const uint action_stack_size ) {
+      _action_stack_size = action_stack_size; }
+    void set_memory_size( const uint memory_size ) {
+      _memory_size = memory_size; }
+    void set_parameter_stack_size( const uint parameter_stack_size ) {
+      _parameter_stack_size = parameter_stack_size; }
+    void set_max_function_offset( const uint max_function_offset ) {
+      _max_function_offset = max_function_offset; }
+    void set_end_function_ratio_a( const uint end_function_ratio_a ) {
+      _end_function_ratio_a = end_function_ratio_a; }
+    void set_end_function_ratio_b( const uint end_function_ratio_b ) {
+      _end_function_ratio_b = end_function_ratio_b; }
       
   private:
     uint
