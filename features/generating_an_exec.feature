@@ -8,11 +8,11 @@ Feature: Generating a bit instruction set exec
     Given I have an output directory "generate_and_casual_inspection"
     And I have a biot with a random genome 10000 integers long
     And my biot has an action count of 10
-    And my biot has senses with the following sense index counts:
-      | Count |
-      |  1296 |
-      |    36 |
-      |     4 |
+    And I have a sensory array with senses with the following index counts:
+      | Index Count |
+      |        1296 |
+      |          36 |
+      |           4 |
     And I have the following bis config attributes object:
       | Attribute            | Value |
       | memory_size          |    32 |

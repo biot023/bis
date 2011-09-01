@@ -7,7 +7,12 @@ def generate_output_dir( dirname )
 end
 
 def run_runner( options )
-  args = options.map do |_key, value|
+  args = options.map do |_key, _value|
+    value = if _value.kind_of?( Array )
+              _value.join( "," )
+            else
+              _value
+            end
     key = _key.gsub( "_", "-" )
     "--#{ key } #{ value }"
   end

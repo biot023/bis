@@ -12,7 +12,7 @@ Given /^my biot has an action count of (\d+)$/ do |count|
   @run_attrs["action_count"] = count.to_i
 end
 
-Given /^my biot has senses with the following sense index counts:$/ do |table|
+Given /^I have a sensory array with senses with the following index counts:$/ do |table|
   @run_attrs ||= {}
   @run_attrs["sense_index_counts"] ||= []
   table.rows.each do |(_count)|
