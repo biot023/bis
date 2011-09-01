@@ -13,12 +13,13 @@ Feature: Generating a bit instruction set exec
       |  1296 |
       |    36 |
       |     4 |
-    And I generate a bis exec for the biot with the following attributes:
+    And I have the following bis config attributes object:
       | Attribute            | Value |
       | memory_size          |    32 |
       | max_function_offset  |    24 |
       | end_function_ratio_a |     1 |
       | end_function_ratio_b |     2 |
+    And I generate a bis exec with the biot and config attributes
     Then an instruction set should have been generated for my biot
     When I inspect the code generated for the exec's instruction set
     Then it should contain between 9550 and 9900 individual instructions
