@@ -11,10 +11,11 @@ additional_ld_flags = []
 ##------------------------------------------------------------------------------
 # CONSTANTS:
 #
-CC  = "g++-mp-4.6.1"
-CXX = "g++-mp-4.6.1"
-AR  = "ar cr"
-RM  = "rm -f"
+CC     = "g++-mp-4.6.1"
+CXX    = "g++-mp-4.6.1"
+AR     = "ar cr"
+RM     = "rm -f"
+RM_DIR = "rm -rf"
 CXXFLAGS = %w( -Wall -g -std=c++0x -c ) + include_dirs.map { |incdir| "-I #{ incdir }" }
 LDFLAGS  = %w( -lboost_regex )
 
@@ -35,6 +36,7 @@ CLEAN = FileList[ "features/feature_runner",
                   "**/*.d",
                   "**/*.xml",
                   "tmp/*" ]
+CLEAN_DIRS = FileList[ "features/output/**/*" ]
 
 ##------------------------------------------------------------------------------
 # HELPERS
@@ -83,7 +85,8 @@ end
 
 desc "Clean up all generated files"
 task :clean do
-  sh "#{ RM } #{ CLEAN.join( " " ) }"
+  sh "#{ RM } #{ CLEAN.join( " " ) }" if CLEAN.size > 0
+  sh "#{ RM_DIR } #{ CLEAN_DIRS.join( " " ) }" if CLEAN_DIRS.size > 0
 end
 
 task :debug do
