@@ -1,9 +1,9 @@
 require "fileutils"
-require "rspec"
 
-World do
-  include RSpec::Expectations
-  include RSpec::Matchers
+def generate_output_dir( dirname )
+  full_dirname = "features/output/#{ dirname }"
+  FileUtils.mkdir_p( full_dirname )
+  full_dirname
 end
 
 class Object

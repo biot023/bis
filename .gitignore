@@ -2,4 +2,5 @@
 features/feature_runner
 test/test_runner
 tmp/*
+features/output/*
 Gemfile.lock
