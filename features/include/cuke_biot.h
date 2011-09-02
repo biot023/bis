@@ -14,7 +14,7 @@ namespace cuke {
     Biot( const uint genome_length, const uint action_count ) :
       _action_count( action_count )
     {
-      std::uniform_int_distribution<int> gene_distribution( 0, 999 );
+      std::uniform_int_distribution<int> gene_distribution( -1000, 1000 );
       std::mt19937 gene_engine;
       std::generate_n( std::back_inserter( _genome ),
                        genome_length,

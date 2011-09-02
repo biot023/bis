@@ -25,7 +25,7 @@ int main( const int argc, const char *argv[] ) {
     uint genome_size( 10000 );
     uint action_count( 8 );
     vector<uint> sense_index_counts { 128, 64, 32, 16, 8 };
-    sptr<BisConfig>::t bis_config( new BisConfig() );
+    sptr<BisConfig>::t mutable_bis_config( new BisConfig() );
     for ( int i = 1 ; i < argc ; i += 2 ) {
       const string key( argv[i] );
       if ( key == "--output-dir" ) {
@@ -44,17 +44,17 @@ int main( const int argc, const char *argv[] ) {
         } else if ( key == "--action-count" ) {
           action_count = val;
         } else if ( key == "--action-stack-size" ) {
-          bis_config->set_action_stack_size( val );
+          mutable_bis_config->set_action_stack_size( val );
         } else if ( key == "--memory-size" ) {
-          bis_config->set_memory_size( val );
+          mutable_bis_config->set_memory_size( val );
         } else if ( key == "--parameter-stack-size" ) {
-          bis_config->set_parameter_stack_size( val );
+          mutable_bis_config->set_parameter_stack_size( val );
         } else if ( key == "--max-function-offset" ) {
-          bis_config->set_max_function_offset( val );
+          mutable_bis_config->set_max_function_offset( val );
         } else if ( key == "--end-function-ratio-a" ) {
-          bis_config->set_end_function_ratio_a( val );
+          mutable_bis_config->set_end_function_ratio_a( val );
         } else if ( key == "--end-function-ratio-b" ) {
-          bis_config->set_end_function_ratio_b( val );
+          mutable_bis_config->set_end_function_ratio_b( val );
         } else {
           stringstream buf;
           buf << "Unknown argument: " << key << " " << argv[i + 1];
@@ -62,6 +62,12 @@ int main( const int argc, const char *argv[] ) {
         } // fi
       } // fi
     } // next i
+    sptr<const cuke::Biot>::t biot
+      ( new cuke::Biot( genome_size, action_count ) );
+    sptr<const cuke::SensoryArray>::t sensory_array
+      ( new cuke::SensoryArray( sense_index_counts ) );
+    sptr<const BisConfig>::t bis_config
+      ( dynamic_pointer_cast<const BisConfig>( mutable_bis_config ) );
     
     // ----------------------------------------
     cout << "Done." << endl;
