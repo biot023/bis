@@ -30,6 +30,10 @@ struct ExecTestFixture {
 BOOST_FIXTURE_TEST_CASE( generating_exec_test, ExecTestFixture ) {
   generate();
 
+  /** It should initialise and return an exec */ {
+    BOOST_CHECK( exec != IExec::NULL_CPTR );
+  }
+
   /** It should initialise the instruction set */ {
     BOOST_CHECK( exec->instruction_set() != IInstructionSet::NULL_CPTR );
   }
