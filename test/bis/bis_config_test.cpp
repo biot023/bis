@@ -7,15 +7,15 @@ using namespace std;
 using namespace bis;
 
 struct BisConfigTestFixture {
-  sptr<const BisConfig>::t bis_config;
+  shared_ptr<const BisConfig> bis_config;
 
-  sptr<const BisConfig>::t do_call() {
-    bis_config = sptr<const BisConfig>::t( new BisConfig() );
+  shared_ptr<const BisConfig> do_call() {
+    bis_config = shared_ptr<const BisConfig>( new BisConfig() );
     return bis_config;
   }
 
-  sptr<const BisConfig>::t do_call( const BisConfig::attrs &_attrs ) {
-    bis_config = sptr<const BisConfig>::t( new BisConfig( _attrs ) );
+  shared_ptr<const BisConfig> do_call( const BisConfig::attrs &_attrs ) {
+    bis_config = shared_ptr<const BisConfig>( new BisConfig( _attrs ) );
     return bis_config;
   }
 };

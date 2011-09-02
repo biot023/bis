@@ -68,7 +68,8 @@ int main( const int argc, const char *argv[] ) {
       ( new cuke::SensoryArray( sense_index_counts ) );
     sptr<const BisConfig>::t bis_config
       ( dynamic_pointer_cast<const BisConfig>( mutable_bis_config ) );
-    
+    sptr<Exec<cuke::Biot, cuke::SensoryArray>>::t exec
+      ( new Exec<cuke::Biot, cuke::SensoryArray>( biot, sensory_array, bis_config ) );
     // ----------------------------------------
     cout << "Done." << endl;
     return 0;

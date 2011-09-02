@@ -30,3 +30,9 @@ end
 Given /^I generate a bis exec with the biot and config attributes$/ do
   run_runner( { "output_dir" => @output_dir }.merge( @run_attrs ) )
 end
+
+Then /^an instruction set should have been generated for my biot$/ do
+  %w( exec_desc.yml exec_code ).each do |fname|
+    File.exist?( "#{ @ouput_dir }/#{ fname }" ).should be_true
+  end
+end
