@@ -37,6 +37,7 @@ namespace stubs {
 
   class SensoryArray {
   public:
+    SensoryArray() : _sensory_array_indices { 32, 16, 8 } {}
     SensoryArray( const vector<uint> &sensory_array_indices ) :
       _sensory_array_indices( sensory_array_indices ) {}
       

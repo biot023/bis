@@ -39,7 +39,7 @@ void write_out( shared_ptr<TExec> exec, const string output_dir ) {
     fname << output_dir << "/exec_code";
     ofstream file( fname.str() );
     file << "Code:" << endl
-         << exec.code();
+         << exec->instruction_set()->code();
   }
 }
 
