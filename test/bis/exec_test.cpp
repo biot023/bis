@@ -6,15 +6,15 @@
 using namespace std;
 using namespace bis;
 
-typedef stubs::Biot biot_t;
-typedef stubs::SensoryArray sensory_array_t;
-typedef Exec<biot_t, sensory_array_t> exec_t;
+typedef stubs::Biot Biot;
+typedef stubs::SensoryArray SensoryArray;
+typedef Exec<Biot, SensoryArray> TExec;
 
 struct ExecTestFixture {
-  shared_ptr<const biot_t> biot;
-  shared_ptr<const sensory_array_t> sensory_array;
+  shared_ptr<const Biot> biot;
+  shared_ptr<const SensoryArray> sensory_array;
   shared_ptr<const BisConfig> bis_config;
-  shared_ptr<exec_t> exec;
+  shared_ptr<TExec> exec;
 };
 
 BOOST_FIXTURE_TEST_CASE( generating_exec_test, ExecTestFixture ) {

@@ -4,9 +4,8 @@
 
 namespace bis {
 
-  class IExec {
+  struct IExec {
     virtual ~IExec() {}
-    
   };
   
 }

@@ -5,6 +5,7 @@
 
 #include "typedefs.h"
 #include "bis/bis_config.h"
+#include "bis/exec.h"
 
 #include "../features/include/cuke_biot.h"
 #include "../features/include/cuke_sensory_array.h"
@@ -17,6 +18,10 @@ struct bad_args_error {
   bad_args_error( const string &_message ) : message( _message ) {}
 };
 
+typedef cuke::Biot Biot;
+typedef cuke::SensoryArray SensoryArray;
+typedef Exec<Biot, SensoryArray> TExec;
+
 int main( const int argc, const char *argv[] ) {
   try {
     if ( argc < 3 || argc % 2 == 0 )
@@ -25,7 +30,7 @@ int main( const int argc, const char *argv[] ) {
     uint genome_size( 10000 );
     uint action_count( 8 );
     vector<uint> sense_index_counts { 128, 64, 32, 16, 8 };
-    sptr<BisConfig>::t mutable_bis_config( new BisConfig() );
+    shared_ptr<BisConfig> mutable_bis_config( new BisConfig() );
     for ( int i = 1 ; i < argc ; i += 2 ) {
       const string key( argv[i] );
       if ( key == "--output-dir" ) {
@@ -62,14 +67,11 @@ int main( const int argc, const char *argv[] ) {
         } // fi
       } // fi
     } // next i
-    sptr<const cuke::Biot>::t biot
-      ( new cuke::Biot( genome_size, action_count ) );
-    sptr<const cuke::SensoryArray>::t sensory_array
-      ( new cuke::SensoryArray( sense_index_counts ) );
-    sptr<const BisConfig>::t bis_config
+    shared_ptr<const Biot> biot( new Biot( genome_size, action_count ) );
+    shared_ptr<const SensoryArray> sensory_array( new SensoryArray( sense_index_counts ) );
+    shared_ptr<const BisConfig> bis_config
       ( dynamic_pointer_cast<const BisConfig>( mutable_bis_config ) );
-    sptr<Exec<cuke::Biot, cuke::SensoryArray>>::t exec
-      ( new Exec<cuke::Biot, cuke::SensoryArray>( biot, sensory_array, bis_config ) );
+    shared_ptr<TExec> exec( new TExec( biot, sensory_array, bis_config ) );
     // ----------------------------------------
     cout << "Done." << endl;
     return 0;
