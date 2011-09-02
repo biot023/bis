@@ -19,6 +19,13 @@ namespace bis {
           shared_ptr<const BisConfig> config ) {}
     virtual ~Exec() {}
 
+    static shared_ptr<const IExec> generate( shared_ptr<const Biot> biot,
+                                             shared_ptr<const SensoryArray> sensory_array,
+                                             shared_ptr<const BisConfig> config ) {
+      return shared_ptr<const IExec>( new Exec<Biot, SensoryArray>
+                                      ( biot, sensory_array, config ) );
+    }
+
     virtual shared_ptr<const IInstructionSet> instruction_set() const {
       return dynamic_pointer_cast<const IInstructionSet>( _instruction_set ); }
 
