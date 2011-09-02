@@ -21,10 +21,11 @@ Feature: Generating a bit instruction set exec
       | end_function_ratio_b |     2 |
     And I generate a bis exec with the biot and config attributes
     Then an instruction set should have been generated for my biot
-    When I inspect the code generated for the exec's instruction set
+    When I inspect the generated exec
     Then it should contain between 9550 and 9900 individual instructions
     And it should contain between 850 and 940 sequences of instructions
-    And the code should have at least 500 functions
+    When I inspect the exec's generated code
+    Then the code should have at least 500 functions
     And the code should have many newlines
     And the code should have indentation
     And the code should have the following strings at counts of 300 to 450

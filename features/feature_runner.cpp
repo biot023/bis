@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <fstream>
 #include <string>
 #include <boost/algorithm/string.hpp>
 
@@ -21,6 +22,26 @@ struct bad_args_error {
 typedef cuke::Biot Biot;
 typedef cuke::SensoryArray SensoryArray;
 typedef Exec<Biot, SensoryArray> TExec;
+
+void write_out( shared_ptr<TExec> exec, const string output_dir ) {
+  {
+    stringstream fname;
+    fname << output_dir << "/exec_desc.yml";
+    ofstream file( fname.str() );
+    file << "exec:" << endl
+         << "  total_instructions: "
+         << exec->instruction_set()->total_instructions() << endl
+         << "  total_instruction_sequences: "
+         << exec->instruction_set()->total_instruction_sequences() << endl;
+  }
+  {
+    stringstream fname;
+    fname << output_dir << "/exec_code";
+    ofstream file( fname.str() );
+    file << "Code:" << endl
+         << exec.code();
+  }
+}
 
 int main( const int argc, const char *argv[] ) {
   try {
@@ -72,6 +93,7 @@ int main( const int argc, const char *argv[] ) {
     shared_ptr<const BisConfig> bis_config
       ( dynamic_pointer_cast<const BisConfig>( mutable_bis_config ) );
     shared_ptr<TExec> exec( new TExec( biot, sensory_array, bis_config ) );
+    write_out( exec, output_dir );
     // ----------------------------------------
     cout << "Done." << endl;
     return 0;

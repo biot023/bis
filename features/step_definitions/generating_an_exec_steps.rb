@@ -1,3 +1,6 @@
+require "fileutils"
+require "yaml"
+
 Given /^I have an output directory "([^\"]*)"$/ do |dirname|
   @output_dir = generate_output_dir( dirname )
 end
@@ -33,6 +36,20 @@ end
 
 Then /^an instruction set should have been generated for my biot$/ do
   %w( exec_desc.yml exec_code ).each do |fname|
-    File.exist?( "#{ @ouput_dir }/#{ fname }" ).should be_true
+    File.exist?( "#{ @output_dir }/#{ fname }" ).should be_true
   end
+end
+
+When /^I inspect the generated exec$/ do
+  @exec_desc = YAML.load( File.read( "#{ @output_dir }/exec_desc.yml" ) )["exec"]
+end
+
+Then /^it should contain between (\d+) and (\d+) individual instructions$/ do |min, max|
+  @exec_desc["total_instructions"].should be >= min.to_i
+  @exec_desc["total_instructions"].should be <= max.to_i
+end
+
+Then /^it should contain between (\d+) and (\d+) sequences of instructions$/ do |min, max|
+  @exec_desc["total_instruction_sequences"].should be >= min.to_i
+  @exec_desc["total_instruction_sequences"].should be <= max.to_i
 end
